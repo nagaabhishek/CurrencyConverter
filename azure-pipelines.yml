@@ -39,7 +39,7 @@ stages:
             - task: UiPathDeploy@2
               inputs:
                 orchestratorConnection: '8DEv1AMNXczW3y4U15LL3jYf62jK93n5'
-                packagesPath: '$(Build.ArtifactStagingDirectory)\'
+                packagesPath: '$(Build.ArtifactStagingDirectory)\CurrencyArtifact'
                 folderName: 'Workspace'
                 environments: 'UAT'
 
