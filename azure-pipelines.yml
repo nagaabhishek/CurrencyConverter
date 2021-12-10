@@ -8,6 +8,7 @@ stages:
       pool: uiPool
       variables:
         version: '$[counter(1,1)]'
+        process: '$currUAT'
 
       steps:
       - task: UiPathPack@2
@@ -18,7 +19,7 @@ stages:
           outputType: 'Process'
           orchestratorConnection: '8DEv1AMNXczW3y4U15LL3jYf62jK93n5'
           outputPath: '$(Build.ArtifactStagingDirectory)'
-      - publish: $(Build.ArtifactStagingDirectory)
+      - publish: $(Build.ArtifactStagingDirectory)$(process)
         artifact: CurrencyArtifact
 
 
@@ -44,7 +45,7 @@ stages:
 
   - stage: DeployPROD
     displayName: Deploy build artifact to PROD
-    dependsOn: Build
+    dependsOn: DeployUAT
     condition: succeeded()
     jobs:
       - deployment: deployDEV
