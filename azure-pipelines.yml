@@ -19,7 +19,7 @@ stages:
           outputType: 'Process'
           orchestratorConnection: '8DEv1AMNXczW3y4U15LL3jYf62jK93n5'
           outputPath: '$(Build.ArtifactStagingDirectory)'
-      - publish: $(Build.ArtifactStagingDirectory)$(process)
+      - publish: $(Build.ArtifactStagingDirectory)
         artifact: CurrencyArtifact
 
 
