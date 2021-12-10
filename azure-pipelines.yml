@@ -15,10 +15,10 @@ stages:
         inputs:
           versionType: 'ManualVersion'
           version: '1.$(version)'
-          projectJsonPath: '$(Build.SourcesDirectory)\project.json'
+          projectJsonPath: 'project.json'
           outputType: 'Process'
           orchestratorConnection: '8DEv1AMNXczW3y4U15LL3jYf62jK93n5'
-          outputPath: '$(Build.ArtifactStagingDirectory)'
+          outputPath: '$(Build.ArtifactStagingDirectory)\Output'
       - publish: $(Build.ArtifactStagingDirectory)
         artifact: CurrencyArtifact
 
@@ -39,7 +39,7 @@ stages:
             - task: UiPathDeploy@2
               inputs:
                 orchestratorConnection: '8DEv1AMNXczW3y4U15LL3jYf62jK93n5'
-                packagesPath: '$(Pipeline.Workspace)\CurrencyArtifact\'
+                packagesPath: '$(System.DefaultWorkingDirectory)/Output'
                 folderName: 'Workspace'
                 environments: 'UAT'
 
